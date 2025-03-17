@@ -23,8 +23,6 @@
 	});
 </script>
 
-<h1 class="mb-4 text-3xl">Allow List</h1>
-
 <div>
 	<table class="table w-full text-left">
 		<thead class="text-2xl">
