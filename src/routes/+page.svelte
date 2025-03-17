@@ -29,8 +29,8 @@
 			<tr>
 				<th>&nbsp;</th>
 				<th>DB Name</th>
-				<th>Notes</th>
-				<th>Added</th>
+				<th class="hidden md:table-cell">Notes</th>
+				<th class="hidden md:table-cell">Added</th>
 				<th>&nbsp;</th>
 			</tr>
 		</thead>
@@ -42,8 +42,10 @@
 						<img src={player.steam?.avatar.large} alt={player.steam?.nickname} class="h-12 w-12" />
 					</td>
 					<td>{player.name}</td>
-					<td>{player.notes}</td>
-					<td>{player.added ? formatDistanceToNow(player.added) : 'N/A'} ago</td>
+					<td class="hidden md:table-cell">{player.notes}</td>
+					<td class="hidden md:table-cell"
+						>{player.added ? formatDistanceToNow(player.added) : 'N/A'} ago</td
+					>
 					<td>
 						<a
 							href={player.steamLink}
