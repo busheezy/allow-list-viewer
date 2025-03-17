@@ -11,7 +11,7 @@ export const load: PageServerLoad = async () => {
 	const steam = new SteamAPI(STEAM_API_KEY);
 
 	const steamIds = allowList.map((row) => {
-		const steamId = new SteamID(`STEAM_1:${row.steamId}`);
+		const steamId = new SteamID(`STEAM_0:${row.steamId}`);
 
 		return steamId.getSteamID64();
 	});
