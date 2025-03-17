@@ -40,8 +40,11 @@
 		"vite": "^6.0.0"
 	},
 	"dependencies": {
+		"date-fns": "^4.1.0",
 		"drizzle-orm": "^0.40.0",
-		"mysql2": "^3.12.0"
+		"mysql2": "^3.12.0",
+		"steamapi": "^3.0.12",
+		"steamid": "^2.1.0"
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [
