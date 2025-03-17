@@ -22,16 +22,30 @@ export const load: PageServerLoad = async () => {
 		throw new Error('userSummaries is not an array');
 	}
 
-	const pojoUserSummaries = userSummaries.map((user) => {
+	const allowListWithSteamSummary = allowList.map((player) => {
+		const steamId = new SteamID(`STEAM_0:${player.steamId}`);
+		const steamId64 = steamId.getSteamID64();
+
+		const userSummary = userSummaries.find((user) => user.steamID === steamId64);
+
+		if (!userSummary) {
+			throw new Error(`User summary not found for steamId64: ${steamId64}`);
+		}
+
 		return {
-			nickname: user.nickname,
-			avatar: user.avatar,
-			steamID: user.steamID
+			...player,
+			steam: {
+				nickname: userSummary.nickname,
+				avatar: userSummary.avatar,
+				steamID: userSummary.steamID
+			},
+			steamLink: `https://steamcommunity.com/profiles/${steamId64}`,
+			kzProfieLink: `https://kzprofile.com/players/${steamId64}`,
+			steamId64
 		};
 	});
 
 	return {
-		allowList,
-		userSummaries: pojoUserSummaries
+		allowListWithSteamSummary
 	};
 };

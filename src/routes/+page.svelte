@@ -1,26 +1,10 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
-	import SteamID from 'steamid';
 	import { formatDistanceToNow } from 'date-fns';
 
 	let { data }: PageProps = $props();
 
-	const { allowList, userSummaries } = data;
-
-	const allowListWithSteamSummary = allowList.map((player) => {
-		const steamId = new SteamID(`STEAM_0:${player.steamId}`);
-		const steamId64 = steamId.getSteamID64();
-
-		const userSummary = userSummaries.find((user) => user.steamID === steamId64);
-
-		return {
-			...player,
-			steam: userSummary,
-			steamLink: `https://steamcommunity.com/profiles/${steamId64}`,
-			kzProfieLink: `https://kzprofile.com/players/${steamId64}`,
-			steamId64
-		};
-	});
+	const { allowListWithSteamSummary } = data;
 </script>
 
 <div>
