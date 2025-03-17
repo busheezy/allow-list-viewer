@@ -29,8 +29,6 @@
 			<tr>
 				<th>&nbsp;</th>
 				<th>DB Name</th>
-				<th>Steam Name</th>
-				<th>Steam ID</th>
 				<th>Notes</th>
 				<th>Added</th>
 				<th>&nbsp;</th>
@@ -41,11 +39,9 @@
 			{#each allowListWithSteamSummary as player}
 				<tr class="border-b border-gray-200">
 					<td class="mx-2">
-						<img src={player.steam?.avatar.large} alt="Avatar" class="h-12 w-12" />
+						<img src={player.steam?.avatar.large} alt={player.steam?.nickname} class="h-12 w-12" />
 					</td>
 					<td>{player.name}</td>
-					<td>{player.steam?.nickname}</td>
-					<td>{player.steamId64}</td>
 					<td>{player.notes}</td>
 					<td>{player.added ? formatDistanceToNow(player.added) : 'N/A'} ago</td>
 					<td>
@@ -53,14 +49,14 @@
 							href={player.steamLink}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="text-blue-500 hover:underline">Steam Profile</a
+							class="border px-1.5 py-1 text-blue-500 hover:underline">Steam</a
 						>
 
 						<a
 							href={player.kzProfieLink}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="ml-2 text-blue-500 hover:underline">KZ Profile</a
+							class="ml-2 border px-1.5 py-1 text-blue-500 hover:underline">KZ Profile</a
 						>
 					</td>
 				</tr>
