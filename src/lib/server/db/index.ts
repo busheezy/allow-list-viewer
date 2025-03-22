@@ -7,7 +7,11 @@ if (!DATABASE_URL) {
 	throw new Error('DATABASE_URL is not set');
 }
 
-const client = await mysql.createConnection(DATABASE_URL);
+const client = await mysql.createConnection({
+	uri: DATABASE_URL,
+	enableKeepAlive: true,
+	keepAliveInitialDelay: 5000
+});
 
 export const db = drizzle(client, {
 	schema,
