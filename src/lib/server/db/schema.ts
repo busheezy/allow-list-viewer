@@ -1,6 +1,6 @@
 import { mysqlTable, text, timestamp, unique, varchar } from 'drizzle-orm/mysql-core';
 
-export const allowlistTable = mysqlTable(
+export const allowListTable = mysqlTable(
 	'allowlist',
 	{
 		name: varchar({ length: 50 }),
